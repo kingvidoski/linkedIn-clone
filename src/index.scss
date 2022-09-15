@@ -1,0 +1,87 @@
+$background: #f5f5f5;
+
+%flex {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin Align {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flexAlign {
+  @extend %flex;
+  align-items: center;
+}
+
+@mixin flexColumn {
+  @extend %flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@mixin mq($size) {
+  @media only screen and (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin mxq($size) {
+  @media only screen and (max-width: $size) {
+    @content;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  background: $background;
+  font-family: Arial, sans-serif;
+
+  nav.login {
+    @include Align;
+    max-width: 1128px;
+    padding: 12px 0 16px;
+    margin: auto;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    position: relative;
+
+    div {
+      img {
+        width: 135px;
+      }
+      @include mxq(768px) {
+        padding: 0 5px;
+      }
+    }
+  }
+
+  section{
+      width: 100%;
+      max-width: 1128px;
+      min-height: 700px;
+      padding: 60px 0;
+      @include Align;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin: auto;
+      position: relative;
+
+      @include mxq(768px){
+          margin: auto;
+          min-height: 0;
+      }
+  }
+}
